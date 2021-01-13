@@ -1,3 +1,22 @@
+//Examples on array
+
+//an array holding same data types
+var arr1 = [1,2,3,4,5];
+console.log(arr1);
+
+
+var arr2 = ["Yash is intelligent", 21, true];
+console.log(arr2);
+
+arr2.push("Yash loves playing games online");
+console.log(arr2);
+
+arr2.pop();
+console.log(arr2);
+
+arr2.pop();
+console.log(arr2);
+
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -8,6 +27,7 @@ var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
 
+var gameState ="onSling";
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -69,12 +89,15 @@ function draw(){
 }
 
 function mouseDragged(){
+    if(gameState!=="launched"){
     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState = "launched";
 }
 
 function keyPressed(){
